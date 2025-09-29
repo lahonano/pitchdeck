@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superkurator - Propozycja Artystyczna</title>
+    <style>
+        /* --- Global Styles Inspired by festyn.html --- */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Work+Sans:wght@800&display=swap');
+
+        :root {
+            --background-color: #FAF9F6;
+            --text-color: #1a1a1a;
+            --accent-color: #A8FF00; /* Bright Green */
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+            overflow: hidden; /* Prevents scrollbars */
+            background-color: var(--background-color);
+            transition: background-color 0.4s ease;
+            color: var(--text-color);
+        }
+
+        .slide {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 5vw;
+            box-sizing: border-box;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s;
+            background-color: inherit;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 1;
+        }
+        
+        /* --- Typography --- */
+        h1, h2 {
+            font-family: 'Work Sans', 'Helvetica', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 15vw, 10rem);
+        }
+
+        .title-slide h1 {
+            font-size: clamp(2.5rem, 10vw, 8rem); /* Slightly smaller for multi-line title */
+        }
+
+        h2 {
+            font-size: clamp(2rem, 8vw, 5rem);
+            margin-bottom: 40px;
+        }
+        
+        p, li {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            line-height: 1.7;
+            max-width: 900px;
+            margin-left: auto; /* Center block elements */
+            margin-right: auto; /* Center block elements */
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        /* --- Layout & Content Specific --- */
+        .content-wrapper {
+             max-width: 1200px;
+        }
+        
+        .artist-image-placeholder {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background-color: #eee;
+            border: 2px dashed var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+        }
+
+        .timeline {
+            text-align: left;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item h3 {
+            font-family: 'Work Sans', sans-serif;
+            text-transform: uppercase;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin: 0 0 10px 0;
+        }
+
+        .timeline-item p {
+            font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+            margin: 0;
+        }
+
+        /* --- Color Variations --- */
+        .slide.invert {
+            background-color: var(--text-color);
+            color: var(--background-color);
+        }
+        
+        .slide.invert .logo-placeholder,
+        .slide.invert .artist-image-placeholder {
+            border-color: var(--background-color);
+        }
+
+        .slide.accent-bg {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+        }
+
+        /* --- Navigation --- */
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 50px; /* Space between arrows */
+            font-size: 4rem; /* Made arrows much bigger */
+            z-index: 100;
+            color: var(--text-color); /* Default arrow color */
+        }
+        
+        .navigation.invert-nav {
+             color: var(--background-color); /* Arrow color for inverted slides */
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: inherit;
+            margin: 0;
+            padding: 5px;
+            color: inherit;
+            font-weight: 900; /* Bolder arrows */
+            text-shadow: 0 0 5px rgba(0,0,0,0.2); /* Add subtle shadow for depth */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Logo -->
+    <div id="slide1" class="slide active title-slide">
+        <h1>Superkurator<br>x<br>Camp Bursztynowy Las</h1>
+    </div>
+
+    <!-- Slide 2: Proposal Title -->
+    <div id="slide2" class="slide">
+        <h1>PROPOZYCJA</h1>
+    </div>
+
+    <!-- Slide 3: The Event -->
+    <div id="slide3" class="slide invert">
+        <div class="content-wrapper">
+            <h2>Immersyjne doświadczenie: Ostatni rozdział domków</h2>
+            <p>Zanim stare domki kempingowe znikną, damy im ostatni, spektakularny rozdział. Przekształcimy je w tymczasowe, <strong>immersyjne</strong> dzieło sztuki – wielkoformatową instalację, przez którą będzie można spacerować i której będzie można doświadczać. Artysta stworzy spójne, wciągające środowisko, celebrując transformację kempingu. Cały proces udokumentujemy, tworząc unikalne materiały promocyjne, które pokażą to miejsce w zupełnie nowym świetle.</p>
+        </div>
+    </div>
+
+    <!-- Slide 4: The Artist -->
+    <div id="slide4" class="slide">
+        <div class="content-wrapper">
+            <h2>PONCHEE.193</h2>
+            <p> (czyt. Paweł Wiśniewski) – absolwent gdańskiej ASP (grafika projektowa), działa na styku malarstwa, grafiki użytkowej i aktywności ulicznej. Projektuje (branding, ilustracje, okładki), tworzy odzież, sitodruk i malarstwo ścienne. Prowadzi autorską audycję radiową SZKIC FM w każdy poniedziałek w trójmiejskim RADIO INGRID.<br><br>
+            <strong>Współprace i przygody:</strong> 193, ASP, JUMBO, KORPOJAJA, LAYUP, LOWPASS, LPP, ŚW. BASS, TRAFFIC DESIGN, TRISITY, UNDA.<br><br>
+            Jego prace można zobaczyć w przestrzeniach miejskich w Gdańsku, Gdyni, Krakowie, Warszawie, Londynie, Berlinie, Los Angeles i nie tylko. Ostatnia wystawa odbyła się w N29.
+            </p>
+             <div style="font-size: 1rem; margin-top: 30px;">
+                <a href="http://ponchee.com" target="_blank" rel="noopener noreferrer" style="color: inherit; margin-right: 20px;">ponchee.com</a>
+                <a href="https://www.instagram.com/ponchee.193/" target="_blank" rel="noopener noreferrer" style="color: inherit;">Instagram</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: The Vision -->
+    <div id="slide5" class="slide accent-bg">
+        <div class="content-wrapper">
+            <h2>Jedno płótno, maksymalny efekt</h2>
+            <p>Naszym celem jest stworzenie niezwykłego środowiska artystycznego poprzez pomalowanie <strong>wszystkich lub prawie wszystkich szarych domków</strong>. To koncepcja "wszystko albo nic"; siła projektu tkwi w jego skali. Jeśli którekolwiek z domków nie zostaną usunięte, przemalujemy je na neutralny kolor, przygotowując je na następny sezon.</p>
+        </div>
+    </div>
+    
+    <!-- Slide 6: Timeline -->
+    <div id="slide6" class="slide">
+        <div class="content-wrapper">
+            <h2>Harmonogram</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>6-8 października</h3>
+                    <p>Nagrania promocyjne. Nasz zespół nagra materiał "przed" oraz wstępne treści promocyjne.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>9-23 października</h3>
+                    <p>Faza tworzenia. W tym okresie artysta będzie na miejscu, aby malować i przekształcać domki w instalację.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>24-26 października</h3>
+                    <p>Główne wydarzenie. Odsłonięcie instalacji, końcowa dokumentacja i działania medialne.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: About Us -->
+    <div id="slide7" class="slide invert">
+        <div class="content-wrapper">
+            <h2>Fundacja Superkurator</h2>
+            <p>Działamy od 2018 roku. Zrealizowaliśmy ponad 85 wystaw i wydarzeń. Jako pierwsi w Polsce zaprezentowaliśmy wystawę "do it" Hansa Ulricha Obrista, pokazując prace m.in. Davida Lyncha czy Mariny Abramović. Od 2023 roku organizujemy festiwal Spinoff przy łódzkim Fotofestiwalu, na którym prezentowany jest cały wachlarz sztuki współczesnej od pokazów mody, wystaw malarstwa po performance.</p>
+        </div>
+    </div>
+
+    <!-- --- Navigation Controls --- -->
+    <div class="navigation">
+        <button id="prevBtn" class="nav-btn">←</button>
+        <button id="nextBtn" class="nav-btn">→</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Navigation Logic from festyn.html ---
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const navigation = document.querySelector('.navigation');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                const oldSlide = document.querySelector('.slide.active');
+                if (oldSlide) oldSlide.classList.remove('active');
+                
+                const newSlide = slides[index];
+                newSlide.classList.add('active');
+
+                // Update nav color based on slide's theme
+                if (newSlide.classList.contains('invert')) {
+                    navigation.classList.add('invert-nav');
+                } else {
+                    navigation.classList.remove('invert-nav');
+                }
+            }
+
+            function showNextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function showPrevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            nextBtn.addEventListener('click', showNextSlide);
+            prevBtn.addEventListener('click', showPrevSlide);
+            
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'ArrowRight' || event.key === ' ') { // Spacebar also advances
+                    showNextSlide();
+                } else if (event.key === 'ArrowLeft') {
+                    showPrevSlide();
+                }
+            });
+
+            // Show the first slide initially
+            if(slides.length > 0) {
+                showSlide(0);
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
