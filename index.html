@@ -85,21 +85,20 @@
 
         /* --- Layout & Content Specific --- */
         .content-wrapper {
-             max-width: 1200px;
-        }
-        
-        .artist-image-placeholder {
-            width: 100%;
-            max-width: 400px;
-            height: 300px;
-            background-color: #eee;
-            border: 2px dashed var(--text-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 30px auto;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center; /* Wycentrowanie tekstu wewnątrz */
+            padding-top: 5vh; /* Add a bit of space at the top */
+            padding-bottom: 20vh; /* Significantly increase bottom buffer to avoid navigation */
+            max-height: 95vh; /* Ensure content doesn't overflow the screen height */
+            overflow-y: auto; /* Add a scrollbar only if absolutely necessary */
+            box-sizing: border-box; /* Include padding in height calculations */
         }
 
+        /* Hide scrollbar visually but allow scrolling */
+        .content-wrapper::-webkit-scrollbar { display: none; }
+        .content-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
+        
         .timeline {
             text-align: left;
             width: 100%;
@@ -301,6 +300,8 @@
 
 </body>
 </html>
+
+
 
 
 
