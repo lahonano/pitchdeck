@@ -31,7 +31,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Align content to the top by default */
             align-items: center;
             padding: 5vw;
             box-sizing: border-box;
@@ -40,6 +40,10 @@
             visibility: hidden;
             transition: opacity 0.4s ease, visibility 0.4s;
             background-color: inherit;
+        }
+
+        .slide.center-content {
+            justify-content: center; /* New class to center specific slides */
         }
 
         .slide.active {
@@ -88,10 +92,10 @@
             max-width: 900px;
             margin: 0 auto;
             text-align: center; /* Wycentrowanie tekstu wewnątrz */
-            padding-top: 5vh; /* Add a bit of space at the top */
-            padding-bottom: 20vh; /* Significantly increase bottom buffer to avoid navigation */
-            max-height: 95vh; /* Ensure content doesn't overflow the screen height */
-            overflow-y: auto; /* Add a scrollbar only if absolutely necessary */
+            padding-top: 8vh; /* Adjust top padding for vertical position */
+            padding-bottom: 25vh; /* Generous bottom buffer to guarantee no overlap with nav */
+            max-height: 100vh; /* Allow wrapper to use full screen height */
+            overflow-y: auto; /* Add a scrollbar only if content overflows */
             box-sizing: border-box; /* Include padding in height calculations */
         }
 
@@ -171,12 +175,12 @@
 <body>
 
     <!-- Slide 1: Logo -->
-    <div id="slide1" class="slide active title-slide">
+    <div id="slide1" class="slide active title-slide center-content">
         <h1>Superkurator<br>x<br>Camp Bursztynowy Las</h1>
     </div>
 
     <!-- Slide 2: Proposal Title -->
-    <div id="slide2" class="slide">
+    <div id="slide2" class="slide center-content">
         <h1>PROPOZYCJA</h1>
     </div>
 
@@ -206,7 +210,7 @@
     <!-- Slide 5: The Vision -->
     <div id="slide5" class="slide accent-bg">
         <div class="content-wrapper">
-            <h2>Fragmentacja płótna, immersyjny efekt</h2>
+            <h2>Jedno płótno, maksymalny efekt</h2>
             <p>Naszym celem jest stworzenie niezwykłego środowiska artystycznego poprzez pomalowanie <strong>wszystkich lub prawie wszystkich szarych domków</strong>. To koncepcja "wszystko albo nic"; siła projektu tkwi w jego skali. Jeśli którekolwiek z domków nie zostaną usunięte, przemalujemy je na neutralny kolor, przygotowując je na następny sezon.</p>
         </div>
     </div>
@@ -300,6 +304,7 @@
 
 </body>
 </html>
+
 
 
 
